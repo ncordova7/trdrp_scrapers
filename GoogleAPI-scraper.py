@@ -7,6 +7,9 @@
 import googlemaps
 import pprint
 import time
+import pandas as pd
+from pandas.io.json import json_normalize
+import json
 
 from source import scraper
 
@@ -50,10 +53,21 @@ for place in google_places['results']:
     # Print formetted results
     print(this_place_details)
 
+places_results = google_places['results']
+
+df = pd.DataFrame.from_dict(json_normalize(places_results), orient = 'columns')
+print(df)
 
 
+#df = pandas.DataFrame(google_places)
+#df.to_csv()
+#print(df)
+#for i in google_places:
+#    print(i)
 
-""" Maybe use Sul's JSON scraper
+
+"""
+# Maybe use Sul's JSON scraper
 source = "Google Maps"
 
 gmaps = scraper.scraper(google_places, source)
