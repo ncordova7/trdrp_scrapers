@@ -64,6 +64,9 @@ print(df)
 #print(df)
 #for i in google_places:
 #    print(i)
+filename = "google_places.csv"
+
+df.to_csv(r"output/" + filename, header = True, index = False)
 
 
 """
