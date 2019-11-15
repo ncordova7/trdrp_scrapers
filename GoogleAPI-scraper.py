@@ -33,8 +33,10 @@ print("Searching ", radius_in, "miles surrounding", "(lat:", center_lat_in, "lon
 starting_point = "%s,%s" % (center_lat_in,center_long_in)
 print(starting_point)
 
+
+
 # Search places with paramets
-google_places = maps.places_nearby(location = starting_point, radius = int(radius_in), open_now = False, keyword = keyword_in)
+google_places = maps.places_nearby(location = starting_point, radius = int(radius_in), open_now = False, name = keyword_in)
 
 
 # Output in JSON
@@ -46,7 +48,7 @@ for place in google_places['results']:
     this_place_ID = place['place_id']
 
     # Send back these fields
-    this_fields = ['name', 'geometry/location/lat', 'geometry/location/lng', 'rating', 'type']
+    this_fields = ['name', 'geometry/location/lat', 'geometry/location/lng', 'place_id']
 
     this_place_details = maps.place(place_id = this_place_ID, fields = this_fields)
 
@@ -64,6 +66,9 @@ print(df)
 #print(df)
 #for i in google_places:
 #    print(i)
+filename = "google_places.csv"
+
+df.to_csv(r"output/" + filename, header = True, index = False)
 
 
 """
@@ -74,5 +79,55 @@ gmaps = scraper.scraper(google_places, source)
 gmaps.connect()
 gmaps.parse()
 gmaps.output("gmaps_places.csv")
+
+
+
+api = GooglePlaces(API_key)
+
+for place in google_places:
+    details = api.get_place_setails(place['place_id'], fields)
+    try:
+        website = details['result']['website']
+    except KeyError:
+        website = ""
+
+    try:
+        name = details['result']['name']
+    except KeyError:
+        name = ""
+
+    try:
+        address = details['result']['formatted_address']
+    except KeyError:
+        address = ""
+
+    try:
+        phone_number = details['result']['international_phone_number']
+    except KeyError:
+        phone_number = ""
+
+    try:
+        reviews = details['result']['reviews']
+    except KeyError:
+        reviews = []
+    print("===================PLACE===================")
+    print("Name:", name)
+    print("Website:", website)
+    print("Address:", address)
+    print("Phone Number", phone_number)
+    print("==================REVIEWS==================")
+    for review in reviews:
+        author_name = review['author_name']
+        rating = review['rating']
+        text = review['text']
+        time = review['relative_time_description']
+        profile_photo = review['profile_photo_url']
+        print("Author Name:", author_name)
+        print("Rating:", rating)
+        print("Text:", text)
+        print("Time:", time)
+        print("Profile photo:", profile_photo)
+        print("-----------------------------------------")
+
 
 """
