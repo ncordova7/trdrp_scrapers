@@ -55,7 +55,14 @@ for place in google_places['results']:
     # Print formetted results
     print(this_place_details)
 
+#places_results = google_places['results']
+
+for key in list(google_places):
+    if (key != 'results' and key != 'name' and key != 'geometry/location/lat' and key != 'geometry/location/lng' and key != 'place_id'):
+        del google_places[key]
+
 places_results = google_places['results']
+
 
 df = pd.DataFrame.from_dict(json_normalize(places_results), orient = 'columns')
 print(df)
