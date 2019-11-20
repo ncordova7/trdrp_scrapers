@@ -1,13 +1,10 @@
 import requests
-import csv
 import json
 import datetime
 import pandas as pd
 from pandas.io.json import json_normalize
 import copy
 
-#from lxml import html
-#import time
 
 class scraper:
 
@@ -67,5 +64,5 @@ class scraper:
 
 
     def output(self, filename):
-
+    	
         self.dataframe1.to_csv(r"output/" + filename, header = True, index = False)
