@@ -1,12 +1,15 @@
 # trdrp_scrapers
 tools used to help with Health and Space Lab research 
-Suleiman Karkoutli
+Suleiman Karkoutli - Submission 3 
 
-I refactored the weedmaps API scrapper script to use the open source Pandas package. 
-This reduced the amount of lines of code needed to parse the json and makes maintaining the code easier.  
-The script's logic has been implemented for our other APIs. 
+I wrote the Yelp API scraper script which hits the Yelp API and retries information on different dispensaries.
+After retrieving the Yelp Data it then retrieves all of the reviews for each respective dispensary.  
+These reviews can then be used to mine sentiment.  The Yelp script can also be used to retrieve information on community centers which will be beneifical for our analysis. 
+Elmer and I also diagrammed and created our data ingestion pipeline. We currently have the API and Database connection sections completed
 
 Planning to do next:
-I plan on incorporating the Yelp API in order to get review data for each of our dispensaries.
-This will then be used in coordination with the Weedmaps API to mine sentiment. 
-I also plan on writing a script to easily append our dataframes to our google cloud server databases and enforcing data integrity checks along the way. 
+-I am planning on populating our tables to our SQL Server Database with the Weedmaps + Yelp information and maintaining data integrity checks.
+- After our data is on the server this will be used to preproccess our review data and create sentiment visualizations through Tableau.
+-Over see Tableau visualizations and serve as the point of contact for any Tableau troubleshooting. 
+
+
