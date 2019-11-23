@@ -12,10 +12,8 @@ from pandas.io.json import json_normalize
 import json
 import yaml
 
-from source import scraper
 
-
-with open(r'source/keys.yaml') as file:
+with open(r'../keys.yaml') as file:
 	keys = yaml.load(file, Loader=yaml.FullLoader)
 
 
@@ -32,6 +30,7 @@ keywords = keys['keywords']
 for keyword in keywords:
     print(keyword)
 
+exit()
 # Our Google Maps client
 maps = googlemaps.Client(key = API_key)
 
@@ -47,4 +46,4 @@ for keyword in keywords:
     places_results = google_places['results']
     df = pd.DataFrame.from_dict(json_normalize(places_results), orient = 'columns')
     print(df)
-    df.to_csv(r"output/" + "google_" + keyword + ".csv", header = True, index = False)
+    df.to_csv(r"../output/" + "google_" + keyword + ".csv", header = True, index = False)

@@ -117,10 +117,10 @@ for index, row in test1Names.iterrows():
 
 #write csv file
 filename = "yelp_" + d.strftime("%m-%d-%Y") + ".csv"
-test1.to_csv(r"output/" + filename, header = True, index = False)
+test1.to_csv(r"../output/" + filename, header = True, index = False)
 
 filename1 = "yelp_reviews_" + d.strftime("%m-%d-%Y") + ".csv"
-reviews.to_csv(r"output/" + filename1, header = True, index = False)
+reviews.to_csv(r"../output/" + filename1, header = True, index = False)
 
 #connect to database
 #database connection isnt working currently

@@ -65,4 +65,4 @@ class scraper:
 
     def output(self, filename):
     	
-        self.dataframe1.to_csv(r"output/" + filename, header = True, index = False)
+        self.dataframe1.to_csv(r"../output/" + filename, header = True, index = False)
