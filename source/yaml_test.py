@@ -1,6 +1,6 @@
 import yaml
 
-with open(r'source/keys.yaml') as file:
+with open(r'keys.yaml') as file:
 	keys = yaml.load(file, Loader=yaml.FullLoader)
 
 print(keys)
