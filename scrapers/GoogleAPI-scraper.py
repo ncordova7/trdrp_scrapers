@@ -30,7 +30,7 @@ keywords = keys['keywords']
 for keyword in keywords:
     print(keyword)
 
-exit()
+#exit()
 # Our Google Maps client
 maps = googlemaps.Client(key = API_key)
 
@@ -45,5 +45,13 @@ for keyword in keywords:
     google_places = maps.places_nearby(location = starting_point, radius = int(radius_in), open_now = False, name = keyword)
     places_results = google_places['results']
     df = pd.DataFrame.from_dict(json_normalize(places_results), orient = 'columns')
-    print(df)
+
+	# RENAMING
+    df = df.rename(columns={"name": "BUSINESS_NAME", "address": "ADDRESS", "state": "STATE", "city": "CITY", "zip_code": "ZIPCODE", "latitude": "LATITUDE", "longitude": "LONGITUDE"})
+
+	# FILLING NULL VALUES WITH "NA"
+    df = df.fillna("NA")
+
     df.to_csv(r"../output/" + "google_" + keyword + ".csv", header = True, index = False)
+
+    print(df)
