@@ -1,9 +1,12 @@
 Follow instructions below to run our program
  
-1. ensure you have all required libraries listed in the requirements.txt to do so run pip install -r requirements.txt
-2. if you are running windows double click the .bat file
-   if you are running linux double click the .sh file
+Step 1 - Download Python 3.7.4
+Step 2 - pip install requirements.txt
+Step 3 - Gather API Keys (Google, Yelp, SODA)
+Step 4 - Open keys.yaml with a text editor and make changes to keywords for Google and Yelp scrapes
+Step 5 - If running windows, double click scrape.bat. If running Mac or Linux, double click scrape.sh.
+Step 6 - Look inside output folder for csv's containing scrape
 
-3. If any errors occur you can also open terminal, cd into repo, and run python *.py
-   
-To ensure the program ran correctly, look inside of the output folder to find current scrape csv files.
+Problem: “Public Health and Public Admin Analysts are often frustrated by the effort it takes to manually record property types and locations.”
+Solution: “Our scrapers eliminate that problem.”
+Value: “With our repo, you can spend less time collecting data and more time conducting analyzing."

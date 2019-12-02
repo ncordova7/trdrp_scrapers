@@ -2,8 +2,12 @@ import sys
 sys.path.append('../')
 from source import scraper
 import datetime
+import yaml
 
-weedmaps_json_site = "https://api-g.weedmaps.com/discovery/v1/listings?sort_by=position&filter%5Blocation%5D=any&latlng=33.96210098266602%2C-118.2745513916016&page_size=100&page=1"
+with open(r'../keys.yaml') as file:
+	keys = yaml.load(file, Loader=yaml.FullLoader)
+
+weedmaps_json_site = keys['weedmaps']
 source = "WEEDMAPS"
 current = datetime.datetime.now()
 date = current.strftime("%m-%d-%Y")

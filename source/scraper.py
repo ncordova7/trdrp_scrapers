@@ -59,6 +59,7 @@ class scraper:
         #add date column
         df["DATE_SCRAPED"] = self.date
         df["SOURCE"] = self.source
+        df["PROPERTY_TYPE"] = "MARIJUANA_DISPENSARY"
         #print("Dispensaries Scraped Dimensions (rows by columns): ", df.shape)
 
         # RENAMING
@@ -66,15 +67,17 @@ class scraper:
     													  "city": "CITY", "zip_code": "ZIPCODE", "latitude": "LATITUDE", 
     													  "longitude": "LONGITUDE"})
 
-        # FILLING NULL VALUES WITH "NA"
-        df = df.fillna("NA", inplace = True)
 
-        #ERROR HERE. GET NONE TYPE 
-        # cols = ['BUSINESS_NAME', 'ADDRESS', 'STATE', 'CITY', 'ZIPCODE', 'LATITUDE', 'LONGITUDE','DATE_SCRAPED','SOURCE']
-        # df.reindex(columns = cols)
-
+        
+        cols = ['BUSINESS_NAME', 'ADDRESS', 'STATE', 'CITY', 'ZIPCODE', 'LATITUDE', 'LONGITUDE','DATE_SCRAPED','SOURCE']
+        df = df.reindex(columns = cols)
+        
         #df = df[['BUSINESS_NAME', 'ADDRESS', 'STATE', 'CITY', 'ZIPCODE', 'LATITUDE', 'LONGITUDE','DATE_SCRAPED','SOURCE']]
         
+
+        # FILLING NULL VALUES WITH "NA", doesnt actually do it. when reassigned throws error
+        df.fillna("NA", inplace =True)
+        print(df.head())
         #ERROR HERE. GET NONE TYPE 
         self.dataframe1 = df
 
