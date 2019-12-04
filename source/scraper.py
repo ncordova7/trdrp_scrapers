@@ -1,13 +1,10 @@
 import requests
-import csv
 import json
 import datetime
 import pandas as pd
 from pandas.io.json import json_normalize
 import copy
 
-#from lxml import html
-#import time
 
 class scraper:
 
@@ -45,11 +42,11 @@ class scraper:
 
         #dictionary of features from json
         desired_features = {"name" :1, "address": 2, "longitude": 3, "latitude" : 4,
-        "state": 5, "city": 6, "zip_code": 7, "ranking" : 8, "rating": 9, "web_url": 10,
-        "reviews_count": 11, "license_type" : 12, "type": 13, "retailer_services": 14
-        }
+        					"state": 5, "city": 6, "zip_code": 7}
 
-        #loop through defined deatures and if a column is not there create one and put null values
+        #, "ranking" : 8, "rating": 9, "web_url": 10, "reviews_count": 11, "license_type" : 12, "type": 13, "retailer_services": 14
+
+        #loop through defined features and if a column is not there create one and put null values
         for i in desired_features:
             if(i not in df.columns):
                 df[i] = None
@@ -60,12 +57,41 @@ class scraper:
                 df = copy.deepcopy(df.drop(columns = [i]))
 
         #add date column
-        df["date"] = self.date
-        print("Dispensaries Scraped Dimensions (rows by columns): ", df.shape)
+        df["DATE_SCRAPED"] = self.date
+        df["SOURCE"] = self.source
+        df["PROPERTY_TYPE"] = "MARIJUANA_DISPENSARY"
+        #print("Dispensaries Scraped Dimensions (rows by columns): ", df.shape)
 
+        # RENAMING
+        df = df.rename(columns={"name": "BUSINESS_NAME", "address": "ADDRESS", "state": "STATE",
+    													  "city": "CITY", "zip_code": "ZIPCODE", "latitude": "LATITUDE", 
+    													  "longitude": "LONGITUDE"})
+
+
+        
+        cols = ['BUSINESS_NAME', 'ADDRESS', 'STATE', 'CITY', 'ZIPCODE', 'LATITUDE', 'LONGITUDE','DATE_SCRAPED','SOURCE']
+        df = df.reindex(columns = cols)
+        
+        #df = df[['BUSINESS_NAME', 'ADDRESS', 'STATE', 'CITY', 'ZIPCODE', 'LATITUDE', 'LONGITUDE','DATE_SCRAPED','SOURCE']]
+        
+
+        # FILLING NULL VALUES WITH "NA", doesnt actually do it. when reassigned throws error
+        df.fillna("NA", inplace =True)
+        print(df.head())
+        #ERROR HERE. GET NONE TYPE 
         self.dataframe1 = df
+
+        #THIS METHOD GIVES ME THE SAME ERROR
+        #self.dataframe1[['BUSINESS_NAME', 'ADDRESS', 'STATE', 'CITY', 'ZIPCODE', 'LATITUDE', 'LONGITUDE','DATE_SCRAPED','SOURCE']]
 
 
     def output(self, filename):
+    	
+    	# self.dataframe1 = self.dataframe1.rename(columns={"name": "BUSINESS_NAME", "address": "ADDRESS", "state": "STATE",
+    	# 												  "city": "CITY", "zip_code": "ZIPCODE", "latitude": "LATITUDE", 
+    	# 												  "longitude": "LONGITUDE"})
 
-        self.dataframe1.to_csv(r"output/" + filename, header = True, index = False)
+    	# self.dataframe1 = self.dataframe1.fillna("NA", inplace = True)
+
+    	# self.dataframe1[['BUSINESS_NAME', 'ADDRESS', 'STATE', 'CITY', 'ZIPCODE', 'LATITUDE', 'LONGITUDE','DATE_SCRAPED','SOURCE']]
+    	self.dataframe1.to_csv(r"../output/" + filename, header = True, index = False)
