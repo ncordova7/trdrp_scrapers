@@ -1,5 +1,10 @@
 # Geo-Scraping South Los Angeles Toolset
 
+Reference-style: 
+![alt text][logo]
+
+[logo]: https://d2mpqlmtgl1znu.cloudfront.net/AcuCustom/Sitename/DAM/017/LosAngeles_with_palms_Adobe.jpg
+
 ## What is this?
 
 This toolset is a wrapper around the GoogleMaps, Yelp, Weedmaps, and LA City/County SODA API to help you scrape and aggregate spatial data for further analysis 
@@ -17,6 +22,15 @@ Follow instructions below to run our program
 
 ##### NOTE
 If you would like to run each scrape individually, after finishing step 4, use command line to cd into the scrapers folder and run a python command to run specified scraper.
+
+If you have no clue where to start for getting API keys please see below links
+
+- [SODA API](https://dev.socrata.com/docs/app-tokens.html)
+- [Google Places API](https://uaelementor.com/docs/get-google-places-api-key/)
+- [Yelp API](https://rapidapi.com/blog/yelp-fusion-api-profile-pull-local-business-data/)
+- [WeedMaps](https://stackoverflow.com/questions/50105364/scraping-menu-data-from-weedmaps)
+
+If you are having issues running any of these files please feel free to email me at camargop@chapman.edu
 
 ## Uses for a program like this
 
