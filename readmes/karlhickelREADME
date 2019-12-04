@@ -5,6 +5,10 @@ Current contributions include:
 - Add IP addresses for individuals to get access
 - Setup Tableau connection with Nic and Sul
 - Put master dataset on MySQL server.
+- Connected Nic Cordova to the Google Server to use in Tableau.
+- Helped format the poster to be presented on 12/4.
 
 Future Contributions:
 - Store python algorithms on vm to update queries. 
+- Create a relational tables to ensure integrity of data. 
+- Store more data and run updates on the data. 
