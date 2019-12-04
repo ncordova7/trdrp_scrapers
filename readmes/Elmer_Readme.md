@@ -13,3 +13,8 @@ Next Sprint Contributions:
 1. Clean program files
 2. Create bat and sh files 
 3. Identify alternative funding sources
+
+Final Sprint Contributions:
+1. Cleaned program files
+2. Created bat and sh files 
+3. Identified alternative funding sources and wrote grant request paper
