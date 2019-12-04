@@ -5,6 +5,20 @@ Current contributions include:
 - Add IP addresses for individuals to get access
 - Setup Tableau connection with Nic and Sul
 - Put master dataset on MySQL server.
+- Connected Nic Cordova to the Google Server to use in Tableau.
+- Helped format the poster to be presented on 12/4.
 
-Future Contributions:
+Contributions that I did not get to:
 - Store python algorithms on vm to update queries. 
+- Create a relational tables to ensure integrity of data. 
+- Store more data and run updates on the data. 
+- Add everyone to the server to run SQL queries. 
+
+Google Cloud Connection steps:
+Connect to server using MySql connector and stored data into pandas data frames. 
+To store the data you need to run the python file that utilizes the credentials to connect to the server.
+After connecting the script runs a for loop that stores variables in the master Marijuana table. 
+Unfortunately due to time constraints we were not able to use a python vm to run a refresh script that updates
+our marijuana master file. Our ideal master table would add a last update column that indicates the last time the row
+had been inserted into the table. Also due to limiations we were unable to ensure referencial integrity across multiple tables. 
+These limitations prevented us from really developing a cohesive ecosystem of referential tables. 
