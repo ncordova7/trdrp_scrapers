@@ -1,6 +1,5 @@
 # Geo-Scraping South Los Angeles Toolset
 
-Reference-style: 
 ![alt text][logo]
 
 [logo]: https://d2mpqlmtgl1znu.cloudfront.net/AcuCustom/Sitename/DAM/017/LosAngeles_with_palms_Adobe.jpg
