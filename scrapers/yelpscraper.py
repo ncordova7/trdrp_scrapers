@@ -8,16 +8,14 @@ import yaml
 import os
 import numpy as np
 
-#yelp_key
-#api_key= 'CuTMcKvzJtwEZ-8M6NjD5xMIk5DAjsyyVHOtX_J5uBrQ2U9FpLdC6JJz-aXj6fAreU_MrxWZsbrXUwlW9C_-ApCwprt6ApVkx83A7Cv_eXl1bNCrakenUhAynJLkXXYx'
-#with open(r'../keys.yaml') as file:
-	#keys = yaml.load(file, Loader=yaml.FullLoader)
 
-#api_key = keys['yelp']
-#url='https://api.yelp.com/v3/businesses/search'
-#search = 'dispensaries'
-#params={'term':search, 'location':'South Los Angeles'}
-#headers = {'Authorization': 'Bearer %s' % api_key}
+with open(r'../keys.yaml') as file:
+	keys = yaml.load(file, Loader=yaml.FullLoader)
+
+
+# Get yelp API key
+api_key = keys['yelp']
+
 
 def createRequest(headers, api_key, url, params):
     yelp_search = requests.get(url, params = params, headers= headers)
@@ -132,8 +130,6 @@ def getReviews(id, desired_features, store_name, business_type):
 with open(r'../keys.yaml') as file:
 	keys = yaml.load(file, Loader=yaml.FullLoader)
 
-api_key = keys['yelp']
-#api_key= 'CuTMcKvzJtwEZ-8M6NjD5xMIk5DAjsyyVHOtX_J5uBrQ2U9FpLdC6JJz-aXj6fAreU_MrxWZsbrXUwlW9C_-ApCwprt6ApVkx83A7Cv_eXl1bNCrakenUhAynJLkXXYx'
 url='https://api.yelp.com/v3/businesses/search'
 
 keywords = {"dispensary": "dispensary"}
@@ -165,10 +161,10 @@ for key in keys['keywords']:
         filename = "yelp_" + d.strftime("%m-%d-%Y") + ".csv"
         filename1 = "yelp_reviews_" + d.strftime("%m-%d-%Y") + ".csv"
 
-        with open(r"../output/" + filename, 'a') as f:
+        with open(r"../" + filename, 'a') as f:
             test1.to_csv(f, mode='a', header=f.tell()==0)
 
-        with open(r"../output/"+ filename1, 'a') as k:
+        with open(r"../"+ filename1, 'a') as k:
             reviews.to_csv(k, mode='a', header=k.tell()==0)
         #if not os.path.isfile(filename):
             #test1.to_csv(r"../output/" + filename, header = True)

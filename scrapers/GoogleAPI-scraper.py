@@ -30,7 +30,7 @@ keywords = keys['keywords']
 for keyword in keywords:
     print(keyword)
 
-#exit()
+
 # Our Google Maps client
 maps = googlemaps.Client(key = API_key)
 
