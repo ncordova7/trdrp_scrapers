@@ -161,10 +161,10 @@ for key in keys['keywords']:
         filename = "yelp_" + d.strftime("%m-%d-%Y") + ".csv"
         filename1 = "yelp_reviews_" + d.strftime("%m-%d-%Y") + ".csv"
 
-        with open(r"../" + filename, 'a') as f:
+        with open(r"../output/" + filename, 'a') as f:
             test1.to_csv(f, mode='a', header=f.tell()==0)
 
-        with open(r"../"+ filename1, 'a') as k:
+        with open(r"../output/"+ filename1, 'a') as k:
             reviews.to_csv(k, mode='a', header=k.tell()==0)
         #if not os.path.isfile(filename):
             #test1.to_csv(r"../output/" + filename, header = True)
