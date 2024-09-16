@@ -1,0 +1,6 @@
+googlemaps
+pandas
+pyyaml
+mysql
+sodapy
+numpy
